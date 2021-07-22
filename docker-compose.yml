@@ -57,7 +57,10 @@ services:
       - "SPARK_MASTER=spark://spark-master:7077"
 
   zeppelin:
-    image: apache/zeppelin:0.8.1
+    image: spark-zeppelin
+    build:
+      context: ./de-hands-on/docker-apache-spark-zeppelin
+      dockerfile: Dockerfile
     hostname: zeppelin
     container_name: zeppelin
     ports:
