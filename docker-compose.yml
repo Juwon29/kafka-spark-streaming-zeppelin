@@ -106,6 +106,8 @@ services:
     image: apache/zeppelin:0.8.1
     hostname: zeppelin
     container_name: zeppelin
+    ports:
+      - "0.0.0.0:8888:8080"
     expose:
       - "8443"
       - "4040"
@@ -113,6 +115,11 @@ services:
       - ./zeppelin/datadrive:/datadrive
       - ./zeppelin/pyspark-notebooks:/zeppelin/notebook
       - ./zeppelin/zeppelin-interpreters/interpreter.json:/zeppelin/conf/interpreter.json
+    environment:
+      - "SPARK_MASTER=spark://spark-master:7077"
+      - "SPARK_HOME=/spark"
+    depends_on:
+      - spark-master
 
 networks:
   app-tier:
