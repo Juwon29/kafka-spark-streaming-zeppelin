@@ -2,6 +2,7 @@ version: "3"
 services:
   zookeeper:
     image: docker.io/bitnami/zookeeper:3.7
+    container_name: zookeeper
     ports:
       - "2181:2181"
     volumes:
@@ -13,6 +14,7 @@ services:
 
   kafka:
     image: docker.io/bitnami/kafka:2
+    container_name: kafka
     ports:
       - "9092:9092"
     volumes:
